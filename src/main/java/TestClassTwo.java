@@ -4,12 +4,14 @@ import org.testng.annotations.Test;
 @Test(groups="grouptwo" )
 public class TestClassTwo {
 
-    @Test
-    void classTwoMethodOne(){
+    @Test(groups = "reg")
+    public void classTwoMethodOne(){
         System.out.println("Inside Class Two : method test one");
     }
     @BeforeMethod
-    void classTwoBeforeMethod(){
+    public void classTwoBeforeMethod(){
         System.out.println("Inside Class Two : Before test method");
     }
+
+
 }

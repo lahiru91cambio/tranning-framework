@@ -1,30 +1,24 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestSuite1">
+<suite name="TestSuite22">
 
-    <test name="test1">
+    <test name = "test1">
         <classes>
-            <class name="TestClassTwo"/>
-        </classes>
-    </test>
-
-    <test name="test2Methods">
-        <classes>
-            <class name="TestClassWthree">
+            <class name="NewTestClass">
                 <methods>
-                    <include name="classTwoMethodTwo"/>
+                    <include name = "method4"/>
+                </methods>
+            </class>
+            <class name="TestClass">
+                <methods>
+                    <include name="group2testMethod12"/>
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="test3Groups">
-        <groups>
-            <run>
-                <include name="runGroup01"/>
-                <exclude name="runGroup02"/>
-            </run>
-        </groups>
+    <test name="test2">
+
     </test>
 
     <listeners>

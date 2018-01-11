@@ -7,6 +7,9 @@
     <groupId>com.training</groupId>
     <artifactId>tranning-framework</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+
 
     <dependencies>
         <dependency>
@@ -36,6 +39,11 @@
             <version>3.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -45,33 +53,74 @@
         </repository>
     </repositories>
 
+<profiles>
+    <profile>
+        <id>test-profile1</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.5</version>
+                        <configuration>
+                            <testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
+                            <testClassesDirectory>${project.build.directory}/classes</testClassesDirectory>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>testing.xml</suiteXmlFile>
+                                <!--suiteXmlFile>testing2.xml</suiteXmlFile-->
+                            </suiteXmlFiles>
+                            <properties>
+                                <property>
+                                    <name>usedefaultlisteners</name>
+                                    <value>false</value>
+                                </property>
+                                <property>
+                                    <name>listener</name>
+                                    <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
+                                </property>
+                            </properties>
+                            <workingDirectory>target/</workingDirectory>
+                        </configuration>
+                    </plugin>
 
+                </plugins>
 
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.5</version>
-            <configuration>
-                <properties>
-                    <property>
-                        <name>usedefaultlisteners</name>
-                        <value>false</value>
-                    </property>
-                    <property>
-                        <name>listener</name>
-                        <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
-                    </property>
-                </properties>
-                <workingDirectory>target/</workingDirectory>
-            </configuration>
-        </plugin>
+            </build>
+    </profile>
 
+    <profile>
+        <id>test-profile2</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.5</version>
+                    <configuration>
+                        <testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
+                        <testClassesDirectory>${project.build.directory}/classes</testClassesDirectory>
+                        <suiteXmlFiles>
+                            <!--suiteXmlFile>testing.xml</suiteXmlFile-->
+                            <suiteXmlFile>testing2.xml</suiteXmlFile>
+                        </suiteXmlFiles>
+                        <properties>
+                            <property>
+                                <name>usedefaultlisteners</name>
+                                <value>false</value>
+                            </property>
+                            <property>
+                                <name>listener</name>
+                                <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
+                            </property>
+                        </properties>
+                        <workingDirectory>target/</workingDirectory>
+                    </configuration>
+                </plugin>
 
+            </plugins>
 
-    </plugins>
-
-</build>
+        </build>
+    </profile>
+</profiles>
 
 </project>

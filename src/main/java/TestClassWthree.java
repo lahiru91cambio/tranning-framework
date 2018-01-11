@@ -4,11 +4,11 @@ import org.testng.annotations.Test;
 @Test(groups="groupw3")
 public class TestClassWthree {
 
-    @Test
+    @Test(groups = "runGroup01")
     void classTwoMethodOne(){
         System.out.println("Inside TestClassWthree : method test one");
     }
-    @Test
+    @Test(groups =  "runGroup02")
     void classTwoMethodTwo(){
         System.out.println("Inside TestClassWthree : method test two");
     }
